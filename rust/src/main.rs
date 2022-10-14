@@ -1,8 +1,6 @@
 mod p0001;
 mod p0002;
-
-//pub use crate::p0001::solutions;
-pub use crate::p0002::solutions;
+mod p0004;
 
 fn main() {
     println!("Starting Project Euler...");
@@ -15,6 +13,10 @@ fn main() {
     println!("    Solution #2.1: simple -- {}", p0002::solutions::simple());
     println!("    Solution #2.2: take_while -- {}", p0002::solutions::using_take_while());
     println!("    Solution #2.3: iterators -- {}", p0002::solutions::using_iterators());
+    println!();
+
+    println!("  Problem #4: Largest palindrome product...");
+    println!("    Solution #4.1: simple -- {}", p0004::solutions::simple());
     println!();
 
     println!("----------");
