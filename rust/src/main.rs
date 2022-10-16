@@ -17,7 +17,8 @@ fn main() {
 
     println!("  Problem #4: Largest palindrome product...");
     println!("    Solution #4.1: simple -- {}", p0004::solutions::simple());
-    println!("    Solution #4.2: optimal == {}", p0004::solutions::optimal());
+    println!("    Solution #4.3: optimal == {}", p0004::solutions::optimal());
+    println!("    Solution #4.3: short == {}", p0004::solutions::short());
     println!();
 
     println!("----------");

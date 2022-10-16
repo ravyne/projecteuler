@@ -23,7 +23,7 @@
 // 1 | --  --  --  --  --  --  --  --   1
 
 pub mod solutions {
-    const LIMIT: i64 = 9;
+    const LIMIT: i64 = 999;
 
     struct Iterator2D<T: Iterator, U: Iterator> {
          row_iter: T,
@@ -77,33 +77,43 @@ pub mod solutions {
 
     pub fn optimal() -> i64 {
         let mut palindrome: i64 = 0;
-        let mut found = false;
+        //let mut found = false;
 
         for r in (1..=LIMIT).rev() {
-            for s in (0..=(LIMIT - r)) {
-                let a = (r+s, r-s);
-                let b = (r+s, r-s-1);
+            let s = LIMIT - r;
+            let a = Iterator2D::new(r..=LIMIT, (std::cmp::max(r-s, 0)..=r).rev());
+            let b = Iterator2D::new(r..=LIMIT, (std::cmp::max(r-s-1, 0)..=r-1).rev());
 
-                println!("<{}, {}>", a.0, a.1);
-                //println!("<{}, {}>", b.0, b.1);
+            for c in a.chain(b) {
+                let prod = c.0 * c.1;
+                palindrome = if is_palindrome(prod) { prod } else { 0 };
 
-                let pa = a.0 * a.1;
-                let pb = b.0 * b.1;
+                //println!("<{}, {}>: product {} is palindrome? {} ", c.0, c.1, prod, prod == palindrome);
 
-                // check the smaller first...
-                if is_palindrome(pb) {
-                    palindrome = pb;
-                    found = true;
-                }
-
-                // .. so can be overwritten by larger
-                if is_palindrome(pa) {
-                    palindrome = pa;
-                    found = true;
+                if palindrome != 0 {
+                    break;
                 }
             }
 
-            if found {
+            if palindrome != 0 {
+                break;
+            }
+        }
+
+        return palindrome;
+    }
+
+    pub fn short() -> i64 {
+        let mut palindrome: i64 = 0;
+        //let mut found = false;
+
+        for r in (1..=LIMIT).rev() {
+            let s = LIMIT - r;
+            let a = Iterator2D::new(r..=LIMIT, (std::cmp::max(r-s, 0)..=r).rev());
+            let b = Iterator2D::new(r..=LIMIT, (std::cmp::max(r-s-1, 0)..=r-1).rev());
+
+            if let Some(c) = a.chain(b).find(|&c| is_palindrome(c.0 * c.1)) {
+                palindrome = c.0 * c.1;
                 break;
             }
         }
