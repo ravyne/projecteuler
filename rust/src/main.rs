@@ -7,6 +7,7 @@ fn main() {
 
     println!("  Problem #1: Multiples of 3s or 5s...");
     println!("    Solution #1.1: simple -- {}", p0001::solutions::simple());
+    println!("    Solution #1.2: short -- {}", p0001::solutions::short());
     println!();
 
     println!("  Problem #2: Even Fibonacci numbers...");
