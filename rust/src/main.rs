@@ -1,6 +1,7 @@
 mod p0001;
 mod p0002;
 mod p0004;
+mod p0005;
 
 fn main() {
     println!("Starting Project Euler...");
@@ -20,6 +21,10 @@ fn main() {
     println!("    Solution #4.1: simple -- {}", p0004::solutions::simple());
     println!("    Solution #4.3: optimal == {}", p0004::solutions::optimal());
     println!("    Solution #4.3: short == {}", p0004::solutions::short());
+    println!();
+
+    println!("  Problem #5: smallest multiple...");
+    println!("    Solution #5.1: simple -- {}", p0005::solutions::simple());
     println!();
 
     println!("----------");
