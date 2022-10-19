@@ -2,6 +2,7 @@ mod p0001;
 mod p0002;
 mod p0004;
 mod p0005;
+mod p0006;
 
 fn main() {
     println!("Starting Project Euler...");
@@ -23,8 +24,12 @@ fn main() {
     println!("    Solution #4.3: short == {}", p0004::solutions::short());
     println!();
 
-    println!("  Problem #5: smallest multiple...");
+    println!("  Problem #5: Smallest multiple...");
     println!("    Solution #5.1: simple -- {}", p0005::solutions::simple());
+    println!();
+
+    println!("  Problem #6: Sum square difference...");
+    println!("    Solution #6.1: simple -- {}", p0006::solutions::simple());
     println!();
 
     println!("----------");
