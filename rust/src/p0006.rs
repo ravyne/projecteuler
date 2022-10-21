@@ -22,12 +22,21 @@
 
 pub mod solutions {
 
-    const LIMIT: i64 = 10;
+    const LIMIT: i64 = 100;
 
     pub fn simple() -> i64 {
         let numbers = 1i64..=LIMIT;
         let sum_of_squares: i64 = numbers.clone().map(|n| n * n).sum();
         let square_of_sums: i64 = i64::pow(numbers.clone().sum(), 2);
+
+        square_of_sums - sum_of_squares
+    }
+
+    pub fn optimal() -> i64 {
+        let n: i64 = LIMIT;
+        let sum_n = n * (n+1) / 2;
+        let square_of_sums = sum_n * sum_n;
+        let sum_of_squares = n * (n + 1) * (2 * n + 1) / 6;
 
         square_of_sums - sum_of_squares
     }

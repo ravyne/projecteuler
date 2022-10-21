@@ -30,10 +30,11 @@ fn main() {
 
     println!("  Problem #6: Sum square difference...");
     println!("    Solution #6.1: simple -- {}", p0006::solutions::simple());
-    println!("    Solution #6.2: optimal -- {}", p0006::solutions::term_elim());
-    println!("    Solution #6.3: short -- {}", p0006::solutions::short());
-    println!("    Solution #6.4: optimal2 -- {}", p0006::solutions::term_elim_increm());
-    println!("    Solution #6.5: short2 -- {}", p0006::solutions::short_increm());
+    println!("    Solution #6.2: optimal -- {}", p0006::solutions::optimal());
+    println!("    Solution #6.3: term_elim -- {}", p0006::solutions::term_elim());
+    println!("    Solution #6.4: short -- {}", p0006::solutions::short());
+    println!("    Solution #6.5: term_elim_increm -- {}", p0006::solutions::term_elim_increm());
+    println!("    Solution #6.6: short_increm -- {}", p0006::solutions::short_increm());
     println!();
 
     println!("----------");
