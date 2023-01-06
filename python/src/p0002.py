@@ -9,6 +9,8 @@
 # By considering the terms in the Fibonacci sequence whose values do not exceed
 # four million, find the sum of the even-valued terms.
 
+from itertools import takewhile
+
 LIMIT = 4000000
 
 class fibonacci(object):
@@ -21,7 +23,7 @@ class fibonacci(object):
 
     # python 3
     def __next__(self):
-        return self.next
+        return self.next()
 
     def next(self):
         curr = self.curr
@@ -30,6 +32,7 @@ class fibonacci(object):
         self.n = self.n + curr
 
         return self.n
+
 
 def simple():
     sum = 0
@@ -45,5 +48,23 @@ def simple():
 
     return sum
 
+
+def using_take_while():
+    sum = 0
+    fib = fibonacci()
+
+    for f in takewhile(lambda f:f < LIMIT, fib):
+        if (f % 2) == 0:
+            sum = sum + f
+
+    return sum
+
+
+def using_iterators():
+    return sum(filter(lambda f:(f % 2) == 0, takewhile(lambda f:f < LIMIT, fibonacci())))
+
+
 if __name__ == "__main__":
     print("simple: " + str(simple()))
+    print("using_take_while: " + str(using_take_while()))
+    print("using_iterators: " + str(using_iterators()))
