@@ -14,6 +14,8 @@
 from math import lcm
 from functools import reduce
 
+import numpy as np
+
 LIMIT = 20
 
 def simple():
@@ -23,8 +25,11 @@ def simple():
 def short():
     return reduce(lcm, range(1, LIMIT + 1))
 
+def using_numpy():
+    return np.lcm.reduce(range(1, LIMIT + 1))
 
 if __name__ == "__main__":
     print("simple: " + str(simple()))
     print("short: " + str(short()))
+    print("using_numpy: " + str(using_numpy()))
 
