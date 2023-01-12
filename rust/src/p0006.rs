@@ -32,13 +32,22 @@ pub mod solutions {
         square_of_sums - sum_of_squares
     }
 
-    pub fn optimal() -> i64 {
+    pub fn direct() -> i64 {
         let n: i64 = LIMIT;
         let sum_n = n * (n+1) / 2;
         let square_of_sums = sum_n * sum_n;
         let sum_of_squares = n * (n + 1) * (2 * n + 1) / 6;
 
         square_of_sums - sum_of_squares
+    }
+
+    // optimal is a result of simplifying the entire equation from the direct
+    // method; both are constant time, but optimal eq is just 4 muls & 1 div,
+    // down from 6 and 2, respectively.
+    pub fn optimal() -> i64 {
+        let n: i64 = LIMIT;
+
+        n * (3*n+2) * (n+1) * (n-1) / 12
     }
 
     // term_elim/increm and short/increm are derived by expanding the square of
