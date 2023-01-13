@@ -6,7 +6,7 @@
 // Find the largest palindrome made from the product of two 3-digit numbers.
 // 10 9 8 7 6
 
-// 2 3 5 7 = 
+// 2 3 5 7 =
 
 //use std::cmp::max
 
@@ -26,23 +26,23 @@ pub mod solutions {
     const LIMIT: i64 = 999;
 
     struct Iterator2D<T: Iterator, U: Iterator> {
-         row_iter: T,
-         col_iter: U
+        row_iter: T,
+        col_iter: U,
     }
 
     impl<T: Iterator, U: Iterator> Iterator2D<T, U> {
         fn new(row_iter: T, col_iter: U) -> Iterator2D<T, U> {
-            Iterator2D { row_iter: row_iter, col_iter: col_iter }
+            Iterator2D { row_iter, col_iter }
         }
     }
 
-    impl<T: Iterator, U:Iterator> Iterator for Iterator2D<T, U> {
+    impl<T: Iterator, U: Iterator> Iterator for Iterator2D<T, U> {
         type Item = (T::Item, U::Item);
 
         fn next(&mut self) -> Option<Self::Item> {
             if let Some(r) = self.row_iter.next() {
                 if let Some(c) = self.col_iter.next() {
-                    return Some((r, c))
+                    return Some((r, c));
                 }
             }
 
@@ -72,7 +72,7 @@ pub mod solutions {
             }
         }
 
-        return palindrome;
+        palindrome
     }
 
     pub fn optimal() -> i64 {
@@ -81,8 +81,8 @@ pub mod solutions {
 
         for r in (1..=LIMIT).rev() {
             let s = LIMIT - r;
-            let a = Iterator2D::new(r..=LIMIT, (std::cmp::max(r-s, 0)..=r).rev());
-            let b = Iterator2D::new(r..=LIMIT, (std::cmp::max(r-s-1, 0)..=r-1).rev());
+            let a = Iterator2D::new(r..=LIMIT, (std::cmp::max(r - s, 0)..=r).rev());
+            let b = Iterator2D::new(r..=LIMIT, (std::cmp::max(r - s - 1, 0)..=r - 1).rev());
 
             for c in a.chain(b) {
                 let prod = c.0 * c.1;
@@ -100,7 +100,7 @@ pub mod solutions {
             }
         }
 
-        return palindrome;
+        palindrome
     }
 
     pub fn short() -> i64 {
@@ -109,8 +109,8 @@ pub mod solutions {
 
         for r in (1..=LIMIT).rev() {
             let s = LIMIT - r;
-            let a = Iterator2D::new(r..=LIMIT, (std::cmp::max(r-s, 0)..=r).rev());
-            let b = Iterator2D::new(r..=LIMIT, (std::cmp::max(r-s-1, 0)..=r-1).rev());
+            let a = Iterator2D::new(r..=LIMIT, (std::cmp::max(r - s, 0)..=r).rev());
+            let b = Iterator2D::new(r..=LIMIT, (std::cmp::max(r - s - 1, 0)..=r - 1).rev());
 
             if let Some(c) = a.chain(b).find(|&c| is_palindrome(c.0 * c.1)) {
                 palindrome = c.0 * c.1;
@@ -118,6 +118,6 @@ pub mod solutions {
             }
         }
 
-        return palindrome;
+        palindrome
     }
 }

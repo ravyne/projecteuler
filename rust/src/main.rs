@@ -4,6 +4,7 @@ mod p0004;
 mod p0005;
 mod p0006;
 
+#[rustfmt::skip]
 fn main() {
     println!("Starting Project Euler...");
 

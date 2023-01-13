@@ -30,7 +30,7 @@ pub mod solutions {
             let curr = self.curr;
 
             self.curr = self.next;
-            self.next = self.next + curr;
+            self.next += curr;
 
             Some(curr)
         }
@@ -39,19 +39,19 @@ pub mod solutions {
     pub fn simple() -> i64 {
         let mut sum: i64 = 0;
 
-        let mut fib = Fibonacci::new();
+        let fib = Fibonacci::new();
 
-        while let Some(f) = fib.next() {
+        for f in fib {
             if f >= LIMIT {
                 break;
             }
 
             if f % 2 == 0 {
-                sum = sum + f;
+                sum += f;
             }
         }
 
-        return sum;
+        sum
     }
 
     pub fn using_take_while() -> i64 {
@@ -61,11 +61,11 @@ pub mod solutions {
 
         for f in fib.take_while(|f| f < &LIMIT) {
             if f % 2 == 0 {
-                sum = sum + f;
+                sum += f;
             }
         }
 
-        return sum;
+        sum
     }
 
     pub fn using_iterators() -> i64 {
@@ -74,5 +74,4 @@ pub mod solutions {
             .filter(|f| f % 2 == 0)
             .sum()
     }
-
 }

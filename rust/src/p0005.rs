@@ -10,15 +10,13 @@
 // 20 19 18 17 16 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1
 // 20 19 18 17 16 15 14 13 12 11 -- - - - - - - - - -
 
-
-
 pub mod solutions {
 
     const LIMIT: i64 = 20;
 
     // least common multiple
     pub fn lcm(a: i64, b: i64) -> i64 {
-        let (l, g) = if a < b {(a, b)} else {(b, a)};
+        let (l, g) = if a < b { (a, b) } else { (b, a) };
 
         (g..).step_by(g as usize).find(|&m| (m % l) == 0).unwrap()
     }
@@ -27,6 +25,6 @@ pub mod solutions {
         let numbers: [i64; LIMIT as usize] = core::array::from_fn(|n| 1 + n as i64);
         //let numbers = (1..=LIMIT).collect::<Vec<i64>>();
 
-        numbers.into_iter().reduce(|acc, n| lcm(acc, n)).unwrap()
+        numbers.into_iter().reduce(lcm).unwrap()
     }
 }

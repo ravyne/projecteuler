@@ -19,7 +19,7 @@ pub mod solutions {
             }
         }
 
-        return sum;
+        sum
     }
 
     pub fn short() -> i64 {
