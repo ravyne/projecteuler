@@ -8,14 +8,15 @@
 
 LIMIT = 1000
 
+
 def simple():
-    sum = 0
+    val = 0
 
     for n in range(LIMIT):
         if (n % 5 == 0 or n % 3 == 0):
-            sum += n
+            val += n
 
-    return sum
+    return val
 
 
 def short():
@@ -25,4 +26,3 @@ def short():
 if __name__ == "__main__":
     print("simple: " + str(simple()))
     print("short: " + str(short()))
-

@@ -13,13 +13,14 @@ from itertools import takewhile
 
 LIMIT = 4000000
 
-class fibonacci(object):
+
+class Fibonacci:
     def __init__(self):
         self.curr = 0
         self.n = 1
 
     def __iter__(self):
-        return self;
+        return self
 
     # python 3
     def __next__(self):
@@ -35,33 +36,36 @@ class fibonacci(object):
 
 
 def simple():
-    sum = 0
-    fib = fibonacci()
+    val = 0
+    fib = Fibonacci()
 
     f = fib.next()
 
     while f <= LIMIT:
         if (f % 2) == 0:
-            sum = sum + f
+            val = val + f
 
         f = fib.next()
 
-    return sum
+    return val
 
 
 def using_take_while():
-    sum = 0
-    fib = fibonacci()
+    val = 0
+    fib = Fibonacci()
 
-    for f in takewhile(lambda f:f < LIMIT, fib):
+    for f in takewhile(lambda f: f < LIMIT, fib):
         if (f % 2) == 0:
-            sum = sum + f
+            val = val + f
 
-    return sum
+    return val
 
 
 def using_iterators():
-    return sum(filter(lambda f:(f % 2) == 0, takewhile(lambda f:f < LIMIT, fibonacci())))
+    def even(number):
+        return (number % 2) == 0
+
+    return sum(filter(even, takewhile(lambda f: f < LIMIT, Fibonacci())))
 
 
 if __name__ == "__main__":

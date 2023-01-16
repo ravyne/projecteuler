@@ -20,6 +20,7 @@ from functools import reduce
 
 LIMIT = 100
 
+
 def simple():
     numbers = [n + 1 for n in range(LIMIT)]
     sum_of_squares = reduce(lambda s, n: s+n, map(lambda n: n*n, numbers))
@@ -45,14 +46,20 @@ def direct():
     return square_of_sums - sum_of_squares
 
 
-# n^2 + n   n^2 + n
-# n*(n+1)   n*(n+1)   n^4 + 2n^3 + n^2
-#------- x ------- = -------
-#  2         2         4
-
-# (n^2 + n) * (2n + 1) = 2n^3 + 3n^2 + n      3n^4 + 6n^3 + 3n^2   4n^3 + 6n^2 + 2n    3n^4 + 6n^3 - 4n^3 + 3n^2 - 6n^2 - 2n    3n^4 + 2n^3 - 3n^2 - 2n   n(3n^3 + 2n^2 - 3n - 2)   n(3n+2)(n+1)(n-1)
-# --------------------   ---------------  =>  ------------------ - ---------------- => -------------------------------------- = ----------------------- = ----------------------- = -----------------
-#   6                      6                    12                   12                    12                                       12                      12                        12
+# square of sums:                      | sum of squares:
+# n^2 + n   n^2 + n                    |
+# n*(n+1)   n*(n+1)   n^4 + 2n^3 + n^2 | (n^2 + n) * (2n + 1)   2n^3 + 3n^2 + n
+# ------- x ------- = ---------------- | -------------------- = ---------------
+#   2         2         4              |   6                      6
+#
+# square of sums - sum of squares:
+# 3n^4 + 6n^3 + 3n^2   4n^3 + 6n^2 + 2n   3n^4 + 6n^3 - 4n^3 + 3n^2 - 6n^2 - 2n
+# ------------------ - ---------------- = -------------------------------------
+#   12                   12                 12
+#
+#     3n^4 + 2n^3 - 3n^2 - 2n   n(3n+2)(n+1)(n-1)
+#   = ----------------------- = -----------------
+#       12                        12
 def optimal():
     n = LIMIT
 
@@ -64,4 +71,3 @@ if __name__ == "__main__":
     print("short: " + str(short()))
     print("direct: " + str(direct()))
     print("optimal: " + str(optimal()))
-
